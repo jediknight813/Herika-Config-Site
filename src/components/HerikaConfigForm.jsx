@@ -132,7 +132,7 @@ const HerikaConfigForm = () => {
                   </div>
                     
                   </>
-                  
+
               }
             
 
@@ -215,7 +215,7 @@ const HerikaConfigForm = () => {
             <h1 className='text-4xl text-white uppercase self-center mt-10 font-bold'>Speech To Text Config </h1>
             <div className='w-[90%] self-center flex flex-col'> 
             
-              <div className="form-control w-full max-w-xs">
+              <div className="form-control w-full">
                 <label className="label">
                   <span className="label-text">Select STT provider</span>
                 </label>
@@ -227,14 +227,14 @@ const HerikaConfigForm = () => {
 
               { state.STTFUNCTION == "whisper" &&
                 <> 
-                  <div className="form-control w-full max-w-xs">
+                  <div className="form-control w-full">
                     <label className="label">
                       <span className="label-text">OpenAi Api Key</span>
                     </label>
                     <input value={state.OPENAI_API_KEY} onChange={(e) => setState((prevState) => ({ ...prevState, OPENAI_API_KEY: e.target.value }))} type="text" className="input input-bordered w-full max-w-xs" />
                   </div>
 
-                  <div className="form-control w-full max-w-xs">
+                  <div className="form-control w-full">
                     <label className="label">
                       <span className="label-text">Transcription Language</span>
                     </label>
@@ -246,11 +246,11 @@ const HerikaConfigForm = () => {
 
               { state.STTFUNCTION == "azure" &&
                 <>
-                  <div className="form-control w-full max-w-xs">
+                  <div className="form-control w-full">
                     <label className="label">
                       <span className="label-text">Azure Api Key</span>
                     </label>
-                    <input value={state.AZURE_API_KEY} onChange={(e) => setState((prevState) => ({ ...prevState, AZURE_API_KEY: e.target.value }))} type="text" className="input input-bordered w-full max-w-xs" />
+                    <input value={state.AZURE_API_KEY} onChange={(e) => setState((prevState) => ({ ...prevState, AZURE_API_KEY: e.target.value }))} type="text" className="input input-bordered w-full" />
                   </div>
 
                 </>
