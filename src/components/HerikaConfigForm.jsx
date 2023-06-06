@@ -47,7 +47,7 @@ const HerikaConfigForm = () => {
   return (
     <div className=' flex flex-col gap-2'>
         {/* select config tab */}
-        <div className="join join-vertical lg:join-horizontal self-center mt-2">
+        <div className="join join-vertical lg:join-horizontal self-center mt-0 pt-0">
           <button className="btn join-item btn-secondary" onClick={() => setSettingsState("TTS")}>Text-To-Speech</button>
           <button className="btn join-item btn-accent" onClick={() => setSettingsState("STT")}>Speech-To-Text</button>
           <button className="btn join-item btn-success text-white hover:opacity-90" onClick={() => setSettingsState("TG")}>Text-Generation</button>

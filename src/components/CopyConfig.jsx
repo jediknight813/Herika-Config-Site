@@ -100,7 +100,7 @@ $OPENAI_MAX_TOKENS="${OPENAI_MAX_TOKENS}";
           {Config}
         </pre>
       </div>
-      <button className="btn btn-primary w-[200px] self-center" onClick={copyToClipboard}>{isCopied ? 'Copied!' : 'Copy to Clipboard'}</button>
+      <button className="btn btn-primary w-[200px] self-center mb-5 mt-5" onClick={copyToClipboard}>{isCopied ? 'Copied!' : 'Copy to Clipboard'}</button>
     </>
   )
 }
