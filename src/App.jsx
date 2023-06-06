@@ -7,7 +7,7 @@ function App() {
 
   return (
     <>
-      <div className=" absolute flex bg-slate-700 flex-col w-screen min-h-screen h-auto max-w-screen overflow-x-hidden">
+      <div className="flex bg-slate-700 flex-col w-screen min-h-screen h-auto max-w-screen items-center overflow-x-hidden">
         <Navbar />
         <HerikaConfigForm />
       </div>

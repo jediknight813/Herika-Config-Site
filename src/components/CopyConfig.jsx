@@ -1,10 +1,11 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 
 // eslint-disable-next-line react/prop-types
 const CopyConfig = ({ configState }) => {
 
+  const [Mimic3Toggle, setMimic3Toggle] = useState()
   const [isCopied, setIsCopied] = useState(false);
   const copyToClipboard = () => {
     navigator.clipboard.writeText(Config);
@@ -13,6 +14,7 @@ const CopyConfig = ({ configState }) => {
       setIsCopied(false);
     }, 2000);
   };
+
 
   const {
     OPENAI_API_KEY,
@@ -34,14 +36,30 @@ const CopyConfig = ({ configState }) => {
   } = configState;
 
 
+  useEffect(() => {
+
+    // Check if mimic3 is being used for tts
+    if (TTSFUNCTION !== "mimic3") {
+      setMimic3Toggle("//")
+    }
+    else{
+      setMimic3Toggle("")
+    }
+
+  }, [configState, TTSFUNCTION]);
+
+
+
   var Config = `
+<?php
+
 $OPENAI_API_KEY="${OPENAI_API_KEY}";
 $AZURE_API_KEY="${AZURE_API_KEY}";
 $ELEVENLABS_API_KEY="${ELEVENLABS_API_KEY}";
 
 $DEBUG_MODE=${DEBUG_MODE ? 'true' : 'false'};
 $PLAYER_NAME="${PLAYER_NAME}";
-$HERIKA_PERS="${HERIKA_PERS}";
+$HERIKA_PERS="${HERIKA_PERS.replace("'", "\\'").replace('"', "")}";
 $PROMPT_HEAD="${PROMPT_HEAD}";
 
 $AZURETTS_CONF["fixedMood"]="${AZURETTS_CONF.fixedMood}";
@@ -52,7 +70,7 @@ $AZURETTS_CONF["rate"]="${AZURETTS_CONF.rate}";
 $AZURETTS_CONF["countour"]="${AZURETTS_CONF.countour}";
 $AZURETTS_CONF["validMoods"]=array(${AZURETTS_CONF.validMoods.map((mood) => `"${mood}"`).join(', ')});
 
-$MIMIC3="${MIMIC3}";
+${Mimic3Toggle}$MIMIC3="${MIMIC3}";
 $MIMIC3_CONF["voice"]="${MIMIC3_CONF.voice}";
 $MIMIC3_CONF["rate"]="${MIMIC3_CONF.rate}";
 $MIMIC3_CONF["volume"]="${MIMIC3_CONF.volume}";
@@ -70,6 +88,8 @@ $TTSLANGUAGE_AZURE="${TTSLANGUAGE_AZURE}";
 $TTSLANGUAGE_WHISPER="${TTSLANGUAGE_WHISPER}";
 
 $OPENAI_MAX_TOKENS="${OPENAI_MAX_TOKENS}";
+
+?>
 `
 
 
